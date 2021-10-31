@@ -1,3 +1,7 @@
+*{
+    padding: 0%;
+    margin: 0;
+}
 body{
     background:#EFEFEF ;
     color: black;
@@ -33,7 +37,12 @@ body{
         top: 0;
         left: 0;
         width: 100%;
+        transition: all 0.5s;
+        color: #B7B7B7;
     }
+    .topNavBar.sticky{background:white;padding: 10px 0; z-index: 1;
+    box-shadow: 0 0 10px rgba(0,0,0,0.25);color:#3d4451;
+}
     .topNavBar-inner {
         padding: 0 16px;
     }
@@ -52,19 +61,64 @@ body{
         float: left;
         margin-left: 17px;
         margin-right: 17px;
+        position: relative;
     }
     .topNavBar nav > ul> li > a{
         font-size: 12px;
-        color:#B7B7B7;
+        color:inherit;
         font-weight: bold;
         border-top: 3px solid transparent;
         border-bottom: 3px solid transparent;
         padding-top: 5px;
         padding-bottom: 5px;
         display: block;
+        position: relative;
     }
-    .topNavBar nav > ul > li > a:hover{
-        border-bottom: 3px solid red;
+    .topNavBar nav > ul > li.active > a::after{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0%;
+    width: 100%;
+    background: #e06567;
+    height: 3px; 
+    animation: menuSlide 0.3s;
+    }
+    @keyframes menuSlide{
+        0%{
+            width: 0%;
+        }
+        100%{
+            width: 100%;
+        }
+    }
+    .topNavBar .submenu{
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 100%;
+        background: white;
+        color: #3d4451;
+        box-shadow: 0 0 5px rgba(0,0,0,5);
+        
+    }
+    .topNavBar li.active> .submenu {
+        display: block;
+        animation: submenuSlide 0.3s;
+    }
+    @keyframes submenuSlide{
+        0%{
+            margin-right: 100%;
+        }
+        100%{
+           margin-right: 0%;
+        }
+    }
+    .topNavBar .submenu > li{
+        white-space: nowrap;
+        padding: 5px 10px;
+
     }
     .topNavBar .logo{
         font-size: 24px;
@@ -91,7 +145,6 @@ body{
         height: 515px;
         background-color:  rgba(0, 0, 0, 0.8);
     }
-    
     .userCard{
     max-width: 940px;
     margin-left: auto;
@@ -119,9 +172,6 @@ display: block;
     top: 100%;
 
 }
-
-
-
 .userCard .picture{
     float: left;
 
@@ -139,9 +189,7 @@ display: block;
 }
 .userCard .pictureAndText{
 padding: 50px
-}
-
-   
+}  
 .userCard dl dt{
     float: left;
     width: 30%;
@@ -164,8 +212,7 @@ text-align: center;
     padding: 5px 0;
     border-radius: 50%;
     margin: 16px 16px;
-}
-    
+}  
 .userCard >footer.media >a:hover{
     background: #CF5D5F;
 }
@@ -196,11 +243,9 @@ main .downloadResume-wrapper{
     transition: box-shadow 0.2s;
     
 }
-
 main .downloadResume:hover{
 box-shadow: 0px 4px 13px 0px rgba(0,0,0,0.2);
 }
-
 .selfIntridyctuib{
 max-width: 940px;
     margin-left: auto;
@@ -210,7 +255,6 @@ max-width: 940px;
     line-height: 1.8;
     font-size: 20px;
 }
-
 section.skills,
 section.portfolio{
     max-width: 940px;
@@ -231,7 +275,6 @@ font-size: 14px;
 line-height: 1.1;
 padding-right: 40px;
 }
-
 section.skills>ol{
     background: white;
     box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.5);
@@ -243,7 +286,6 @@ section.skills>ol>li{
     width: 48%;
     box-sizing: border-box;
 }
-
 section.skills>ol>li:nth-child(even) {
 float: right;
 }
@@ -316,3 +358,6 @@ section.portfolio .works >.big,
 section.portfolio .works >.small {
     position: absolute;
 }
+
+
+  
