@@ -251,7 +251,23 @@ for(let i=0; i<aTags.length; i++){
 		let href = a.getAttribute('href')//'#siteAbout'
 		let element = document.querySelector(href)
 		let top =  element.offsetTop
-		window.scrollTo(0, top-80)
+		
+		let n = 20 //一共动多少次
+		let t = 500 / n //多少时间动一次
+		let currentTop = window.scrollY
+		let targetTop = top - 80
+		let S = targetTop - currentTop
+		let s = S / n
+		let i = 0
+		let id = setInterval(()=> {
+			if(i===n){
+				window.clearInterval(id)
+				return
+			}
+			i = i + 1
+			window.scrollTo(0, currentTop + s * i)
+		},t)
+		
 	}
 }
 </script>
